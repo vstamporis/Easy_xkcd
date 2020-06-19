@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'gr.aueb.android.barista-plugin'
 android {
 
     compileSdkVersion 28
