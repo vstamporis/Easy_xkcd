@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'gr.aueb.android.barista-plugin'
+apply plugin: 'jacoco'
 android {
 
     compileSdkVersion 28
@@ -10,13 +11,16 @@ android {
         versionCode 166
         versionName "7.3.9"
     }
-    /*buildTypes {
-        release {
+    buildTypes {
+        /*release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.config
+        }*/
+        debug {
+            testCoverageEnabled true
         }
-    }*/
+    }
 
     repositories {
         mavenCentral()
@@ -78,4 +82,27 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
     implementation 'ch.acra:acra:4.9.1'
+}
+
+task jacocoTestReport(type: JacocoReport) {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+
+    def fileFilter = ['**/R.class',
+                      '**/R$*.class',
+                      '**/BuildConfig.*',
+                      '**/Manifest*.*',
+                      '**/*Test*.*',
+                      'android/**/*.*',
+                      '**/data/models/*']
+    def debugTree = fileTree(dir: "${buildDir}/intermediates/javac/debug", excludes: fileFilter)
+    def mainSrc = "${project.projectDir}/src/main/java"
+
+    sourceDirectories = files([mainSrc])
+    classDirectories = files([debugTree])
+    executionData = fileTree(dir: "$project.rootDir", includes: [
+            "coverage.exec"
+    ])
 }
