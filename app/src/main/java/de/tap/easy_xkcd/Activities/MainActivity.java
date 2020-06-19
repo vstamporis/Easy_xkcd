@@ -60,6 +60,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.nbsp.materialfilepicker.ui.FilePickerActivity;
 import com.tap.xkcd_reader.R;
 
+import java.io.File;
+import java.lang.reflect.Method;
 import java.util.Objects;
 
 import androidx.annotation.NonNull;
@@ -933,6 +935,11 @@ public class MainActivity extends BaseActivity {
     protected void onStop() {
         super.onStop();
         customTabActivityHelper.unbindCustomTabsService(this);
+        try {
+            Class<?> emmaRTClass = Class.forName("com.vladium.emma.rt.RT");
+            Method dumpCoverageMethod = emmaRTClass.getMethod("dumpCoverageData", File.class, boolean.class, boolean.class);
+            dumpCoverageMethod.invoke(null, new File("sdcard/coverage.exec"), false, false);
+        } catch (Exception e) {}
     }
 
     public int currentFragmentToNavId() {
