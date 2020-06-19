@@ -115,6 +115,9 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.tap.easy_xkcd.Activities.MainActivity" />
+            <intent-filter>
+                <category android:name="android.intent.category.MONKEY" />
+            </intent-filter>
         </activity>
         <activity
             android:name="de.tap.easy_xkcd.Activities.NestedSettingsActivity"
@@ -124,6 +127,9 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.tap.easy_xkcd.Activities.SettingsActivity" />
+            <intent-filter>
+                <category android:name="android.intent.category.MONKEY" />
+            </intent-filter>
         </activity>
         <activity
             android:name="de.tap.easy_xkcd.Activities.AboutActivity"
@@ -132,6 +138,9 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.tap.easy_xkcd.Activities.MainActivity" />
+            <intent-filter>
+                <category android:name="android.intent.category.MONKEY" />
+            </intent-filter>
         </activity>
         <activity
             android:name="de.tap.easy_xkcd.Activities.SearchResultsActivity"
@@ -140,6 +149,8 @@
             android:parentActivityName="de.tap.easy_xkcd.Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
+                <category android:name="android.intent.category.MONKEY" />
+
             </intent-filter>
 
             <meta-data
@@ -163,6 +174,9 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.tap.easy_xkcd.Activities.MainActivity" />
+            <intent-filter>
+                <category android:name="android.intent.category.MONKEY" />
+            </intent-filter>
         </activity>
         <activity
             android:name="de.tap.easy_xkcd.Activities.DonateActivity"
@@ -172,8 +186,15 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.tap.easy_xkcd.Activities.MainActivity" />
+            <intent-filter>
+                <category android:name="android.intent.category.MONKEY" />
+            </intent-filter>
         </activity>
-        <activity android:name="de.tap.easy_xkcd.Activities.CustomFilePickerActivity" />
+        <activity android:name="de.tap.easy_xkcd.Activities.CustomFilePickerActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.MONKEY" />
+            </intent-filter>
+        </activity>
 
         <service android:name="de.tap.easy_xkcd.services.ArticleDownloadService" />
 
@@ -213,7 +234,11 @@
         <activity
             android:name="de.tap.easy_xkcd.acra.CrashReportActivity"
             android:label="@string/title_activity_crash_report"
-            android:theme="@style/LimeTheme"></activity>
+            android:theme="@style/LimeTheme">
+            <intent-filter>
+                <category android:name="android.intent.category.MONKEY" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
