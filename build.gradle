@@ -9,6 +9,8 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.3'
         classpath 'gr.aueb.android:barista-plugin:2.0.0-rc1'
+        classpath 'org.jacoco:org.jacoco.core:0.7.4.201502262128'
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
